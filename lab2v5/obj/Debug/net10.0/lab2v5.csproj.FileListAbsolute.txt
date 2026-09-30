@@ -12,3 +12,4 @@ C:\Users\трудовик\OOP-Temnov\lab2v5\obj\Debug\net10.0\refint\lab2v5.dll
 C:\Users\трудовик\OOP-Temnov\lab2v5\obj\Debug\net10.0\lab2v5.pdb
 C:\Users\трудовик\OOP-Temnov\lab2v5\obj\Debug\net10.0\lab2v5.genruntimeconfig.cache
 C:\Users\трудовик\OOP-Temnov\lab2v5\obj\Debug\net10.0\ref\lab2v5.dll
+C:\Users\трудовик\OOP-Temnov\lab2v5\obj\Debug\net10.0\lab2v5.sourcelink.json
