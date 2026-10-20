@@ -1,102 +1,104 @@
 ﻿using System;
+using System.Collections.Generic;
 
-namespace Lab4Task
+namespace IndependentWork1
 {
-    public class Vector3D
+    public class Employee
     {
-        private double _x;
-        private double _y;
-        private double _z;
+        private string _fullName;
+        private double _baseSalary;
+        private int _experienceYears;
 
-        public double X
+        public string FullName
         {
-            get { return _x; }
-            set { _x = value; }
+            get { return _fullName; }
         }
 
-        public double Y
+        public double BaseSalary
         {
-            get { return _y; }
-            set { _y = value; }
-        }
-
-        public double Z
-        {
-            get { return _z; }
-            set { _z = value; }
-        }
-
-        public static Vector3D Zero
-        {
-            get { return new Vector3D(0, 0, 0); }
-        }
-
-        public Vector3D(double x, double y, double z)
-        {
-            X = x;
-            Y = y;
-            Z = z;
-        }
-
-        public double this[int index]
-        {
-            get
-            {
-                if (index == 0) return X;
-                if (index == 1) return Y;
-                if (index == 2) return Z;
-                throw new IndexOutOfRangeException("Індекс повинен бути 0, 1 або 2.");
-            }
+            get { return _baseSalary; }
             set
             {
-                if (index == 0) X = value;
-                else if (index == 1) Y = value;
-                else if (index == 2) Z = value;
-                else throw new IndexOutOfRangeException("Індекс повинен бути 0, 1 або 2.");
+                if (value >= 0) _baseSalary = value;
             }
         }
 
-        public static Vector3D operator +(Vector3D v1, Vector3D v2)
+        public Employee(string fullName, double baseSalary, int experienceYears)
         {
-            return new Vector3D(v1.X + v2.X, v1.Y + v2.Y, v1.Z + v2.Z);
+            _fullName = fullName;
+            _baseSalary = baseSalary;
+            _experienceYears = experienceYears;
         }
 
-        public static double operator *(Vector3D v1, Vector3D v2)
+        public double CalculateTotalSalary()
         {
-            return v1.X * v2.X + v1.Y * v2.Y + v1.Z * v2.Z;
+            double bonusRate = _experienceYears * 0.05;
+            return _baseSalary * (1 + bonusRate);
+        }
+    }
+
+    public class Playlist
+    {
+        private string _title;
+        private int _trackCount;
+        private int _totalDurationSeconds;
+
+        public string Title
+        {
+            get { return _title; }
+            set { _title = value; }
         }
 
-        public static bool operator ==(Vector3D v1, Vector3D v2)
+        public int TrackCount
         {
-            if (ReferenceEquals(v1, v2)) return true;
-            if (v1 is null || v2 is null) return false;
-            return v1.Equals(v2);
+            get { return _trackCount; }
         }
 
-        public static bool operator !=(Vector3D v1, Vector3D v2)
+        public Playlist(string title, int trackCount, int totalDurationSeconds)
         {
-            return !(v1 == v2);
+            _title = title;
+            _trackCount = trackCount;
+            _totalDurationSeconds = totalDurationSeconds;
         }
 
-        public override bool Equals(object obj)
+        public string GetFormattedDuration()
         {
-            if (obj is Vector3D other)
+            int minutes = _totalDurationSeconds / 60;
+            int seconds = _totalDurationSeconds % 60;
+            return minutes + " хв " + seconds + " сек";
+        }
+    }
+
+    public class Recipe
+    {
+        private string _dishName;
+        private int _servings;
+        private int _cookingTimeMinutes;
+
+        public string DishName
+        {
+            get { return _dishName; }
+        }
+
+        public int Servings
+        {
+            get { return _servings; }
+            set
             {
-                return Math.Abs(X - other.X) < 1e-9 &&
-                       Math.Abs(Y - other.Y) < 1e-9 &&
-                       Math.Abs(Z - other.Z) < 1e-9;
+                if (value > 0) _servings = value;
             }
-            return false;
         }
 
-        public override int GetHashCode()
+        public Recipe(string dishName, int servings, int cookingTimeMinutes)
         {
-            return HashCode.Combine(X, Y, Z);
+            _dishName = dishName;
+            _servings = servings;
+            _cookingTimeMinutes = cookingTimeMinutes;
         }
 
-        public override string ToString()
+        public bool IsQuickRecipe()
         {
-            return "Vector3D(" + X + ", " + Y + ", " + Z + ")";
+            return _cookingTimeMinutes <= 30;
         }
     }
 
@@ -106,31 +108,22 @@ namespace Lab4Task
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
 
-            Vector3D v1 = new Vector3D(1.5, 2.0, 3.0);
-            Vector3D v2 = new Vector3D(4.0, -1.0, 0.5);
-            Console.WriteLine("v1 = " + v1);
-            Console.WriteLine("v2 = " + v2);
+            Employee emp = new Employee("Олександр Темнов", 25000, 4);
+            Console.WriteLine("Працівник: " + emp.FullName);
+            Console.WriteLine("Базова ставка: " + emp.BaseSalary + " грн");
+            Console.WriteLine("Зарплата з урахуванням стажу: " + emp.CalculateTotalSalary() + " грн");
+            Console.WriteLine();
 
-            Vector3D zero = Vector3D.Zero;
-            Console.WriteLine("Vector3D.Zero = " + zero);
+            Playlist playlist = new Playlist("Улюблені треки", 12, 2350);
+            Console.WriteLine("Плейлист: " + playlist.Title);
+            Console.WriteLine("Кількість треків: " + playlist.TrackCount);
+            Console.WriteLine("Загальна тривалість: " + playlist.GetFormattedDuration());
+            Console.WriteLine();
 
-            v1.X = 2.5;
-            Console.WriteLine("Після зміни v1.X = 2.5: " + v1);
-
-            Console.WriteLine("v1[0] = " + v1[0] + ", v1[1] = " + v1[1] + ", v1[2] = " + v1[2]);
-            v1[2] = 5.0;
-            Console.WriteLine("Після v1[2] = 5.0: " + v1);
-
-            Vector3D sum = v1 + v2;
-            Console.WriteLine("v1 + v2 = " + sum);
-
-            double dotProduct = v1 * v2;
-            Console.WriteLine("Скалярний добуток (v1 * v2) = " + dotProduct);
-
-            Vector3D v3 = new Vector3D(2.5, 2.0, 5.0);
-            Console.WriteLine("v1 == v3: " + (v1 == v3));
-            Console.WriteLine("v1 != v2: " + (v1 != v2));
-            Console.WriteLine("v1.Equals(v3): " + v1.Equals(v3));
+            Recipe recipe = new Recipe("Борщ український", 6, 90);
+            Console.WriteLine("Рецепт: " + recipe.DishName);
+            Console.WriteLine("Порцій: " + recipe.Servings);
+            Console.WriteLine("Швидкий рецепт (<= 30 хв): " + (recipe.IsQuickRecipe() ? "Так" : "Ні"));
         }
     }
 }
