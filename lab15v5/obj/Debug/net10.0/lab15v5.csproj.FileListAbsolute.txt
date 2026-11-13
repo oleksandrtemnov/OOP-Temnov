@@ -1,0 +1,15 @@
+C:\Users\трудовик\OOP-Temnov\lab15v5\obj\Debug\net10.0\lab15v5.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\трудовик\OOP-Temnov\lab15v5\obj\Debug\net10.0\lab15v5.AssemblyInfoInputs.cache
+C:\Users\трудовик\OOP-Temnov\lab15v5\obj\Debug\net10.0\lab15v5.AssemblyInfo.cs
+C:\Users\трудовик\OOP-Temnov\lab15v5\obj\Debug\net10.0\lab15v5.csproj.CoreCompileInputs.cache
+C:\Users\трудовик\OOP-Temnov\lab15v5\obj\Debug\net10.0\lab15v5.sourcelink.json
+C:\Users\трудовик\OOP-Temnov\lab15v5\bin\Debug\net10.0\lab15v5.exe
+C:\Users\трудовик\OOP-Temnov\lab15v5\bin\Debug\net10.0\lab15v5.deps.json
+C:\Users\трудовик\OOP-Temnov\lab15v5\bin\Debug\net10.0\lab15v5.runtimeconfig.json
+C:\Users\трудовик\OOP-Temnov\lab15v5\bin\Debug\net10.0\lab15v5.dll
+C:\Users\трудовик\OOP-Temnov\lab15v5\bin\Debug\net10.0\lab15v5.pdb
+C:\Users\трудовик\OOP-Temnov\lab15v5\obj\Debug\net10.0\lab15v5.dll
+C:\Users\трудовик\OOP-Temnov\lab15v5\obj\Debug\net10.0\refint\lab15v5.dll
+C:\Users\трудовик\OOP-Temnov\lab15v5\obj\Debug\net10.0\lab15v5.pdb
+C:\Users\трудовик\OOP-Temnov\lab15v5\obj\Debug\net10.0\lab15v5.genruntimeconfig.cache
+C:\Users\трудовик\OOP-Temnov\lab15v5\obj\Debug\net10.0\ref\lab15v5.dll
